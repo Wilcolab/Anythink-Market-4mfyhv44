@@ -35,9 +35,14 @@ async def get_items_for_user_feed(
         limit=limit,
         offset=offset,
     )
-    items_for_response = [
-        ItemForResponse(**item.dict()) for item in items
-    ]
+
+    items_for_response = []
+    for item in items:
+        item_dict = item.dict()
+        if 'image' not in item_dict or not item_dict['image']:
+            item_dict['image'] = '/placeholder.png'
+        items_for_response.append(ItemForResponse(**item_dict))
+
     return ListOfItemsInResponse(
         items=items_for_response,
         items_count=len(items),

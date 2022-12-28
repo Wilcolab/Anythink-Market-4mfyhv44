@@ -36,9 +36,9 @@ class Item extends React.Component {
       return null;
     }
 
-    if (!this.props.item.image) {
-      this.props.item.image = "/placeholder.png";
-    }
+    // if (!this.props.item.image) {
+    //   this.props.item.image = "/placeholder.png";
+    // }
 
     const markup = {
       __html: marked(this.props.item.description, { sanitize: true }),
